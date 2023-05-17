@@ -6,11 +6,24 @@ const StyleDictionary = require("style-dictionary");
 
 registerTransforms(StyleDictionary, { excludeParentKeys: true });
 
+const sets = [
+  "global",
+  "button",
+  "table",
+  "pagination",
+  "tag",
+  "input",
+  "dropdown",
+  "sidebar",
+];
+
 const tokenFilter = (cat) => (token) => token.attributes.category === cat;
+
+const globalFilter = (token) => !sets.includes(token.attributes.category);
 
 const generateFilesArr = (tokensCategories) => {
   return tokensCategories.map((cat) => ({
-    filter: tokenFilter(cat),
+    filter: cat === "global" ? globalFilter : tokenFilter(cat),
     destination: `tokens/${cat}.js`,
     format: "javascript/es6",
   }));
@@ -34,17 +47,6 @@ StyleDictionary.registerTransformGroup({
   transforms: [...transforms, "attribute/cti", "numberify", "name/cti/camel"],
 });
 
-const sets = [
-  "global",
-  "button",
-  "table",
-  "pagination",
-  "tag",
-  "input",
-  "dropdown",
-  "sidebar",
-];
-
 const sd = StyleDictionary.extend({
   source: [`tokens.json`],
   platforms: {
@@ -55,5 +57,5 @@ const sd = StyleDictionary.extend({
   },
 });
 
-// sd.cleanAllPlatforms();
+sd.cleanAllPlatforms();
 sd.buildAllPlatforms();

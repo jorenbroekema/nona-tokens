@@ -1,6 +1,6 @@
 /**
  * Do not edit directly
- * Generated on Wed, 17 May 2023 14:15:00 GMT
+ * Generated on Wed, 17 May 2023 14:21:58 GMT
  */
 
 export const sidebarColorSidebarBackgroundBackground = "#ffffff";
