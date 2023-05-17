@@ -1,0 +1,16 @@
+{
+  "name": "sd-cat-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build-tokens.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@tokens-studio/sd-transforms": "^0.9.1",
+    "style-dictionary": "^3.8.0"
+  }
+}
